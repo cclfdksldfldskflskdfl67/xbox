@@ -1,18 +1,17 @@
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Call of Duty: WWII - Xbox</title>
+    <title>Павлов XBOX</title>
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
     <!-- Header / Navigation -->
     <header class="header">
       <div class="header-container">
-        <a href="#" class="xbox-logo">
-          <img src="./img/xbox.png" alt="" />
-        </a>
-        <nav class="nav-links">
+        <img src="./img/xbox.png" alt="" />
+        <nav class="nav-links" id="navLinks">
           <a href="#" class="nav-link">Games ▾</a>
           <a href="#" class="nav-link">Consoles ▾</a>
           <a href="#" class="nav-link">Community</a>
@@ -30,7 +29,7 @@
 
     <!-- Hero Banner -->
     <section class="hero-banner">
-      <img src="./img/Mask.png" alt="Call of Duty WWII" class="hero-image" />
+      <img src="img/Mask.png" alt="Call of Duty WWII" class="hero-image" />
       <div class="hero-overlay">
         <div class="hero-content">
           <h1 class="hero-title">Call of Duty: WWII</h1>
@@ -74,6 +73,7 @@
         </div>
       </div>
     </section>
+
     <!-- Best Answers Section -->
     <section class="content-section">
       <div class="content-row reverse">
@@ -114,11 +114,13 @@
         </div>
       </div>
     </section>
+
     <!-- Bottom Buttons -->
     <section class="bottom-buttons">
       <a href="#" class="btn btn-dark">XBOX Consoles</a>
       <a href="#" class="btn btn-green">Start streaming on mixer</a>
     </section>
+
     <!-- Footer -->
     <footer class="footer">
       <div class="footer-container">
@@ -156,5 +158,40 @@
         </div>
       </div>
     </footer>
+
+    <script>
+      // Mobile menu toggle
+      const mobileMenuToggle = document.getElementById("mobileMenuToggle");
+      const navLinks = document.getElementById("navLinks");
+      const searchBox = document.querySelector(".search-box");
+      const myXbox = document.querySelector(".my-xbox");
+
+      mobileMenuToggle.addEventListener("click", () => {
+        navLinks.classList.toggle("active");
+        mobileMenuToggle.classList.toggle("active");
+
+        // Toggle mobile search and my-xbox visibility
+        if (window.innerWidth <= 768) {
+          searchBox.classList.toggle("mobile-hidden");
+          myXbox.classList.toggle("mobile-hidden");
+        }
+      });
+
+      // Close menu when clicking on a link
+      document.querySelectorAll(".nav-link").forEach((link) => {
+        link.addEventListener("click", () => {
+          navLinks.classList.remove("active");
+          mobileMenuToggle.classList.remove("active");
+        });
+      });
+
+      // Close menu when clicking outside
+      document.addEventListener("click", (e) => {
+        if (!e.target.closest(".header")) {
+          navLinks.classList.remove("active");
+          mobileMenuToggle.classList.remove("active");
+        }
+      });
+    </script>
   </body>
 </html>
